@@ -5,7 +5,7 @@ metadata:
   namespace: rancher
 spec:
   ports:
-    - port: 443
+    - port: 80
       protocol: TCP
       targetPort: 443
       name: https
