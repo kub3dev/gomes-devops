@@ -7,4 +7,4 @@ subsets:
 - addresses:
   - ip: 192.168.50.102 # IP address of your external service that you would like to proxy requests to
   ports:
-  - port: 80
+  - port: 443
