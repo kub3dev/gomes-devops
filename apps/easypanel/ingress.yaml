@@ -17,7 +17,7 @@ spec:
           service:
             name: easypanel-service
             port:
-              number: 80
+              number: 3000
   tls:
   - hosts:
     - easypanel.gomes.dev
