@@ -1,29 +1,24 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: harvester-ingress
-  namespace: rancher
   annotations:
-    cert-manager.io/cluster-issuer: letsencrypt-production
-    nginx.ingress.kubernetes.io/ssl-passthrough: "true"
-    # If you encounter a redirect loop or are getting a 307 response code
-    # then you need to force the nginx ingress to connect to the backend using HTTPS.
-    #
-    nginx.ingress.kubernetes.io/backend-protocol: "HTTPS"
+    nginx.ingress.kubernetes.io/rewrite-target: /
+  name: harvester-ingress
+  namespace: rancher 
 spec:
   ingressClassName: nginx
+  tls:
+  - hosts:
+    - harvester.gomes.dev
+    secretName: harvester-tls
   rules:
   - host: harvester.gomes.dev
     http:
       paths:
-      - path: /
-        pathType: Prefix
-        backend:
+      - backend:
           service:
-            name: harvester-service
+            name: harvester-service # Here you specify the name of the Service traffic must be routed to
             port:
-              name: https
-  tls:
-  - hosts:
-    - harvester.gomes.dev
-    secretName: harvester-tls # as expected by harvester
+              number: 80
+        path: /
+        pathType: ImplementationSpecific
