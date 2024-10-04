@@ -22,7 +22,7 @@ spec:
           service:
             name: harbor-service
             port:
-              name: http
+              name: https
   tls:
   - hosts:
     - harbor.gomes.dev
