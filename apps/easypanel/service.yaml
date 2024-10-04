@@ -4,7 +4,6 @@ metadata:
   name: easypanel-service
   namespace: rancher
 spec:
-  type: NodePort
   selector:
     app: easypanel
   ports:
