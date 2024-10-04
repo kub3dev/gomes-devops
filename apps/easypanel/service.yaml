@@ -4,8 +4,6 @@ metadata:
   name: easypanel-service
   namespace: rancher
 spec:
-  selector:
-    app: easypanel
   ports:
     - protocol: TCP
       port: 3000
